@@ -80,3 +80,15 @@ def test_delete_message(client):
     rv = client.get('/delete/1')
     data = json.loads(rv.data)
     assert data["status"] == 1
+
+def test_search(client):
+    """Ensure the search are working (200) for different inputs """
+    # Matched
+    rv = client.get('/search/', data={'query': 'post 1'})
+    assert rv.status_code == 200
+    # Not Found
+    rv = client.get('/search/', data={'query': 'pos'})
+    assert rv.status_code == 200
+    # Empty String
+    rv = client.get('/search/', data={'query': ''})
+    assert rv.status_code == 200
