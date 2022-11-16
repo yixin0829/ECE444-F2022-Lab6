@@ -1,3 +1,10 @@
+# From Lab 6
+env
+*.pyc
+*.DS_Store
+__pycache__
+test.db
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
