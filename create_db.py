@@ -1,3 +1,6 @@
+# create_db.py
+
+
 from project.app import db
 from project.models import Post
 
@@ -6,4 +9,4 @@ from project.models import Post
 db.create_all()
 
 # commit the changes
-db.session.commit() 
+db.session.commit()
