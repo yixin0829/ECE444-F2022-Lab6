@@ -1,5 +1,4 @@
 import pytest
-import os
 from pathlib import Path
 import json
 
@@ -75,6 +74,7 @@ def test_messages(client):
     assert b"&lt;Hello&gt;" in rv.data
     assert b"<strong>HTML</strong> allowed here" in rv.data
 
+
 def test_delete_message(client):
     """Ensure the messages are being deleted"""
     rv = client.get("/delete/1")
@@ -85,14 +85,15 @@ def test_delete_message(client):
     data = json.loads(rv.data)
     assert data["status"] == 1
 
+
 def test_search(client):
-    """Ensure the search are working (200) for different inputs """
+    """Ensure the search are working (200) for different inputs"""
     # Matched
-    rv = client.get('/search/', data={'query': 'post 1'})
+    rv = client.get("/search/", data={"query": "post 1"})
     assert rv.status_code == 200
     # Not Found
-    rv = client.get('/search/', data={'query': 'pos'})
+    rv = client.get("/search/", data={"query": "pos"})
     assert rv.status_code == 200
     # Empty String
-    rv = client.get('/search/', data={'query': ''})
+    rv = client.get("/search/", data={"query": ""})
     assert rv.status_code == 200
