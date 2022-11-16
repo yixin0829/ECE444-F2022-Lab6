@@ -25,7 +25,8 @@ SECRET_KEY = "change_me"
 url = os.getenv("DATABASE_URL", f"sqlite:///{Path(basedir).joinpath(DATABASE)}")
 if url.startswith("postgres://"):
     url = url.replace("postgres://", "postgresql://", 1)
-SQLALCHEMY_DATABASE_URI = url
+# SQLALCHEMY_DATABASE_URI = url
+SQLALCHEMY_DATABASE_URI = "postgres://cromvncbolcmsn:979a9742562d2c26af14b957006396652776dfb170ef5ea214e521fdd8845944@ec2-52-23-131-232.compute-1.amazonaws.com:5432/d2k6cajb9krt6h"
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
